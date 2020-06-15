@@ -1,0 +1,749 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Shortest_Path" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="680,7838" sap2010:WorkflowViewState.IdRef="Shortest_Path_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:maes="clr-namespace:Microsoft.Activities.Extensions.Statements;assembly=Microsoft.Activities.Extensions" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:ui1="clr-namespace:UiPathTeam.ImageFilterDespeckleActivities;assembly=ImageFilterDespeckleActivities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="24">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="24">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Outer Container" sap:VirtualizedContainerService.HintSize="646,7733" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Automation Page'" sap:VirtualizedContainerService.HintSize="604,7641" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="7796de8687faa35e9b227e5496806396" Selector="&lt;html app='chrome.exe' title='Automation Challenge' /&gt;">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Scrape and Fill" sap:VirtualizedContainerService.HintSize="570,7495" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="demName" />
+              <Variable x:TypeArguments="x:String" Name="demAddress1" />
+              <Variable x:TypeArguments="x:String" Name="demAddress2" />
+              <Variable x:TypeArguments="x:String" Name="demCity" />
+              <Variable x:TypeArguments="x:String" Name="demState" />
+              <Variable x:TypeArguments="x:String" Name="demZip" />
+              <Variable x:TypeArguments="x:String" Name="demCargo" />
+              <Variable x:TypeArguments="x:String" Name="demDate" />
+              <Variable x:TypeArguments="x:String" Name="demShipPref" />
+              <Variable x:TypeArguments="x:String" Name="demCargoPref" />
+              <Variable x:TypeArguments="x:String" Name="supName" />
+              <Variable x:TypeArguments="x:String" Name="supAddress1" />
+              <Variable x:TypeArguments="x:String" Name="supAddress2" />
+              <Variable x:TypeArguments="x:String" Name="supCity" />
+              <Variable x:TypeArguments="x:String" Name="supState" />
+              <Variable x:TypeArguments="x:String" Name="supZip" />
+              <Variable x:TypeArguments="x:String" Name="contractNum" />
+              <Variable x:TypeArguments="x:String" Name="demRow3" />
+              <Variable x:TypeArguments="x:String" Name="demRow4" />
+              <Variable x:TypeArguments="x:String" Name="demRow5" />
+              <Variable x:TypeArguments="x:String" Name="demRow6" />
+              <Variable x:TypeArguments="x:String" Name="demRow7" />
+              <Variable x:TypeArguments="x:String" Name="demRow8" />
+              <Variable x:TypeArguments="x:String" Name="demRow9" />
+              <Variable x:TypeArguments="x:String" Name="demRow10" />
+              <Variable x:TypeArguments="x:String" Name="demRow11" />
+              <Variable x:TypeArguments="x:String" Name="supRow3" />
+              <Variable x:TypeArguments="x:String" Name="supRow4" />
+              <Variable x:TypeArguments="x:String" Name="supRow5" />
+              <Variable x:TypeArguments="x:String" Name="supRow6" />
+              <Variable x:TypeArguments="x:String" Name="supRow7" />
+              <Variable x:TypeArguments="x:Int32" Default="3" Name="demLoopNum" />
+              <Variable x:TypeArguments="scg:Dictionary(x:Object, x:Object)" Default="[New Dictionary(Of Object, Object)]" Name="demDic" />
+              <Variable x:TypeArguments="sd:DataTable" Name="IMGSRCs" />
+              <Variable x:TypeArguments="x:String" Name="fieldText" />
+              <Variable x:TypeArguments="ui:Image" Name="fieldImage" />
+              <Variable x:TypeArguments="ui:Image" Name="fieldImageDespeckled" />
+              <Variable x:TypeArguments="ui:Image" Name="imgdemAddress1" />
+              <Variable x:TypeArguments="ui:UiElement" Name="UIEdemAddress1" />
+              <Variable x:TypeArguments="x:String" Name="rownumdemAddress1" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[IMGSRCs]" DisplayName="Extract Structured Data 'Demand Field Image SRCs'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='IMGURL' attr='src'&gt;&lt;webctrl tag='tr'/&gt;&lt;webctrl tag='td' idx='1'/&gt;&lt;webctrl tag='img' class='imgLabel' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="ExtractData_2" MaxNumberOfResults="9" SimulateClick="True">
+              <ui:ExtractData.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3b9bba88-5a02-41e9-97fc-98f3d5a70e4a" InformativeScreenshot="fe1e778c636d63d717ab05a59f835cab" Selector="&lt;webctrl id='demand_tbody' tag='TBODY' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:ExtractData.Target>
+            </ui:ExtractData>
+            <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[IMGSRCs]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="528,1482" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="SRC" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Scrape Field Names" sap:VirtualizedContainerService.HintSize="478,1335" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="IMGSRC" />
+                      <Variable x:TypeArguments="x:String" Name="IMGBase64" />
+                      <Variable x:TypeArguments="ui:UiElement" Name="match" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="0" DisplayName="Get Row Item" sap:VirtualizedContainerService.HintSize="436,64" sap2010:WorkflowViewState.IdRef="GetRowItem_1" Row="[SRC]">
+                      <ui:GetRowItem.Value>
+                        <OutArgument x:TypeArguments="x:String">[IMGSRC]</OutArgument>
+                      </ui:GetRowItem.Value>
+                    </ui:GetRowItem>
+                    <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[IMGBase64]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[IMGSRC.split(","c)(1)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim bytes As Byte() = convert.FromBase64String(IMGBase64)&#xD;&#xA;File.WriteAllBytes(&quot;C:\Users\DDave\OneDrive\Documents\UiPath\RPAChallenge\Shortest Path\Field Image &quot; + demLoopNum.ToString + &quot;.png&quot;, bytes)" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="436,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+                      <ui:InvokeCode.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="IMGBase64">[IMGBase64]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="demLoopNum">[demLoopNum]</InArgument>
+                      </ui:InvokeCode.Arguments>
+                    </ui:InvokeCode>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,298" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,220" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui1:ImageDespeckle ResultImage="{x:Null}" DespeckleSize="3" DespeckleThreshold="10" DisplayName="Image despeckle" sap:VirtualizedContainerService.HintSize="334,128" sap2010:WorkflowViewState.IdRef="ImageDespeckle_3" ImagePath="[&quot;Shortest Path\Field Image &quot; + demLoopNum.ToString + &quot;.png&quot;]" ResultImagePath="[&quot;Shortest Path\Field Image &quot; + demLoopNum.ToString + &quot; Despeckled.png&quot;]" />
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                    </ui:CommentOut>
+                    <ui:LoadImage DisplayName="Load Image" FileName="[&quot;Shortest Path\Field Image &quot; + demLoopNum.ToString + &quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="436,59" sap2010:WorkflowViewState.IdRef="LoadImage_3" Image="[fieldImage]" />
+                    <ui:GoogleOCR AllowedCharacters="{x:Null}" DeniedCharacters="{x:Null}" FilterRegion="{x:Null}" Output="{x:Null}" ComputeSkewAngle="False" DisplayName="Tesseract OCR" ExtractWords="False" sap:VirtualizedContainerService.HintSize="436,22" sap2010:WorkflowViewState.IdRef="GoogleOCR_15" Image="[fieldImage]" Invert="True" Language="eng" Profile="Legacy" Scale="5" Text="[fieldText]" />
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[fieldText + &quot;: &quot; + demLoopNum.ToString]" />
+                    <maes:AddToDictionary x:TypeArguments="x:Object, x:Object" Dictionary="[demDic]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="436,135" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_1" Key="[fieldText]" Value="[demLoopNum]" />
+                    <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[demLoopNum]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[demLoopNum+1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Demand Name'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_18">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a447f7cf-1315-467b-9c4e-4583718f27dc" InformativeScreenshot="4242099f016ce625fc3421db1dd111b4" Selector="&lt;webctrl id='demand_table' tag='TABLE' /&gt;&#xA;&lt;webctrl tableCol='2' tag='TD' idx='1' /&gt;&#xA;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[demName]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT Demand Name'" EmptyField="True" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="TypeInto_14" SendWindowMessages="False" SimulateType="True" Text="[demName]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a317cf7b-0609-4f1b-903a-8c58b792aefe" InformativeScreenshot="9dbc34c043b5f88425310d3288c81459" Selector="&lt;webctrl aaname='Name' parentid='gamecontainer' tag='SPAN' idx='1' /&gt;&lt;nav up='1' /&gt;&lt;webctrl id='*' tag='INPUT' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:LoadImage DisplayName="Load Image" FileName="Shortest Path\Address 1.png" sap:VirtualizedContainerService.HintSize="528,59" sap2010:WorkflowViewState.IdRef="LoadImage_4" Image="[imgdemAddress1]" />
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Demand Address 1'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_19">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7dd5aea4-b7aa-4674-9e19-d7985f8f32f6" InformativeScreenshot="48ee999c038590b468074130c8752201" Selector="&lt;webctrl tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[demAddress1]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT Demand Address 1'" EmptyField="True" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="TypeInto_15" SendWindowMessages="False" SimulateType="True" Text="[demAddress1]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6f779826-733e-4c11-bbdd-6473da9e2416" InformativeScreenshot="ccde0c2750737646239a3649ab082043" Selector="&lt;webctrl aaname='Address' parentid='gamecontainer' tag='SPAN' idx='1' /&gt;&#xA;&lt;nav up='1' /&gt;&#xA;&lt;webctrl id='*' tag='INPUT' /&gt;&#xA;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Demand Address 2'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_20">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="45400ee1-fc4f-4f2a-930a-cdc98b999ce5" InformativeScreenshot="d78a914f0da73f0921ca92b76cbc3576" Selector="&lt;webctrl id='demand_table' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='11' tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[demAddress2]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  Demand Address 2'" EmptyField="False" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="TypeInto_16" SendWindowMessages="False" SimulateType="True" Text="[demAddress2]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8da60b7c-2713-428b-8266-122135e6d25b" InformativeScreenshot="03f3c304e05c42beeb4dd01d28f6935d" Selector="&lt;webctrl aaname='Address-2' parentid='gamecontainer' tag='SPAN' idx='1' /&gt;&#xA;&lt;nav up='1' /&gt;&#xA;&lt;webctrl id='*' tag='INPUT' /&gt;&#xA;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Demand City'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_21">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b67c0e6c-373c-4dba-be4b-ccf3e3ee674d" InformativeScreenshot="1f09258db4c0b37ddc08147f96e96236" Selector="&lt;webctrl id='demand_table' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='10' tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[demCity]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  Demand City'" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="TypeInto_17" Text="[demCity]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="444f3f23-2926-48f1-b8d4-68b7fbe2d59c" InformativeScreenshot="8ff7adab9872c623039c9cb7c135906b" Selector="&lt;webctrl aaname='City' parentid='gamecontainer' tag='SPAN' idx='1' /&gt;&#xA;&lt;nav up='1' /&gt;&#xA;&lt;webctrl id='*' tag='INPUT' /&gt;&#xA;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Demand State'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_22">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ea864b6b-dcc1-47b0-888e-017c879f9153" InformativeScreenshot="3da7212804d20289356b2cb80520bd9b" Selector="&lt;webctrl id='demand_table' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='3' tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[demState]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item 'SELECT  Demand State'" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="SelectItem_3" Item="[demState]">
+              <ui:SelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="50">
+                  <x:String>AL</x:String>
+                  <x:String>AK</x:String>
+                  <x:String>AZ</x:String>
+                  <x:String>AR</x:String>
+                  <x:String>CA</x:String>
+                  <x:String>CO</x:String>
+                  <x:String>CT</x:String>
+                  <x:String>DE</x:String>
+                  <x:String>DC</x:String>
+                  <x:String>FL</x:String>
+                  <x:String>GA</x:String>
+                  <x:String>HI</x:String>
+                  <x:String>ID</x:String>
+                  <x:String>IL</x:String>
+                  <x:String>IN</x:String>
+                  <x:String>IA</x:String>
+                  <x:String>KS</x:String>
+                  <x:String>KY</x:String>
+                  <x:String>LA</x:String>
+                  <x:String>ME</x:String>
+                  <x:String>MD</x:String>
+                  <x:String>MA</x:String>
+                  <x:String>MI</x:String>
+                  <x:String>MN</x:String>
+                  <x:String>MS</x:String>
+                  <x:String>MO</x:String>
+                  <x:String>MT</x:String>
+                  <x:String>NE</x:String>
+                  <x:String>NH</x:String>
+                  <x:String>NV</x:String>
+                  <x:String>NJ</x:String>
+                  <x:String>NM</x:String>
+                  <x:String>NY</x:String>
+                  <x:String>NC</x:String>
+                  <x:String>ND</x:String>
+                  <x:String>OH</x:String>
+                  <x:String>ON</x:String>
+                  <x:String>OK</x:String>
+                  <x:String>OR</x:String>
+                  <x:String>PA</x:String>
+                  <x:String>QC</x:String>
+                  <x:String>RI</x:String>
+                  <x:String>SC</x:String>
+                  <x:String>SD</x:String>
+                  <x:String>TN</x:String>
+                  <x:String>TX</x:String>
+                  <x:String>UT</x:String>
+                  <x:String>VT</x:String>
+                  <x:String>VA</x:String>
+                  <x:String>WA</x:String>
+                </scg:List>
+              </ui:SelectItem.Items>
+              <ui:SelectItem.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9c8c336c-bd04-47a4-9381-ddda7663b7d3" InformativeScreenshot="6cb3ef049decf9449a64acdec4d69ee0" Selector="&lt;webctrl aaname='State' tag='LABEL' idx='1' /&gt;&#xA;&lt;nav up='1' /&gt;&#xA;&lt;webctrl id='*' tag='SELECT' /&gt;&#xA;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:SelectItem.Target>
+            </ui:SelectItem>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Demand Zip Code'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_23">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f9983a9a-e672-4308-a9f1-b93ca868cd57" InformativeScreenshot="e8f86e909c2c07b83ca8e5ce5b20ce1a" Selector="&lt;webctrl id='demand_table' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='4' tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[demZip]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  Demand Zip Code'" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="TypeInto_18" Text="[demZip]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="92b0b8bf-4c26-43e9-b8d1-ceb486f67b24" InformativeScreenshot="f07451317845811b0ebb7ea96be6944f" Selector="&lt;webctrl aaname='Zip' tag='LABEL' idx='1' /&gt;&#xA;&lt;nav up='1' /&gt;&#xA;&lt;webctrl id='*' tag='INPUT' /&gt;&#xA;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Demand Cargo Description'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_24">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3857679a-da43-4c09-9c43-101b01fddf08" InformativeScreenshot="d580188236d5bea9c043e6a5586d9266" Selector="&lt;webctrl id='demand_table' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='8' tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[demCargo]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT Demand Cargo Description'" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="TypeInto_19" Text="[demCargo]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6af1fb1a-f9b7-474b-ac84-795dc9bb1588" InformativeScreenshot="3075f4f0eaacfd5d1b19ffb975133a3b" Selector="&lt;webctrl aaname='Cargo Description' parentid='gamecontainer' tag='SPAN' /&gt;&#xA;&lt;nav up='1' /&gt;&#xA;&lt;webctrl tag='TEXTAREA' /&gt;&#xA;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Demand Cargo Preference'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_25">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7c80a97a-c4f7-42cc-8124-b18d781d1171" InformativeScreenshot="5c19d2b471be062e03830c56e4568eb2" Selector="&lt;webctrl id='demand_table' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='5' tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[demCargoPref]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:Check AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Action="Uncheck" DisplayName="Check 'INPUT  Demand Cargo Preference'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="Check_3">
+              <ui:Check.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dc20b2bd-247f-4f27-9055-7adab20f2845" InformativeScreenshot="1d86651948d3844e564846172452c950" Selector="&lt;webctrl aaname='                                    *{{demCargoPref}}*                      *' tag='LABEL' /&gt;&#xA;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:Check.Target>
+            </ui:Check>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Demand Shipping Date'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_26">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f7a6816f-afd0-478a-a167-91f32ae160d0" InformativeScreenshot="7d70aa73b11d2c2fa70a1abe1d26b1b5" Selector="&lt;webctrl id='demand_table' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='9' tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[demDate]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  Demand Shipping Date'" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="TypeInto_20" Text="[demDate]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7b96947f-401f-40d7-bfaa-d34d4550fc21" InformativeScreenshot="2c38876b091cf5e642c8cb3f1c9e2805" Selector="&lt;webctrl aaname='Ship Date' parentid='gamecontainer' tag='SPAN' /&gt;&#xA;&lt;nav up='1' /&gt;&#xA;&lt;webctrl id='*' tag='INPUT' /&gt;&#xA;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Demand Shipping Preference'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_27">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cb28840f-a978-4a7b-bbe4-1eebcbef65ec" InformativeScreenshot="624d096528c6e55863cb28a1dd22cc9f" Selector="&lt;webctrl id='demand_table' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='6' tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[demShipPref]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:Check AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Action="Check" DisplayName="Check 'INPUT  Demand Shipping Preference'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="Check_4">
+              <ui:Check.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="20083d29-8236-44f8-8de7-8f5db9ceeffd" InformativeScreenshot="0edf4ae2330adadf270fcf72c754caed" Selector="&lt;webctrl aaname='                                   *{{demShipPref}}*                      *' tag='LABEL' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:Check.Target>
+            </ui:Check>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Supply Name'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_28">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b5126935-a047-4e37-8c6d-cd79fc27fec0" InformativeScreenshot="c330fe0db0deb59375822c915be3e8dc" Selector="&lt;webctrl id='supply_table' tag='TABLE' /&gt;&#xA;&lt;webctrl tag='TD' idx='1' /&gt;&#xA;&lt;nav up='1' /&gt;&#xA;&lt;webctrl tableCol='2' tag='TD' /&gt;&#xA;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[supName]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  Supply Name'" EmptyField="False" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="TypeInto_21" SendWindowMessages="False" SimulateType="True" Text="[supName]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="17703736-2122-4a0a-85c2-fb336a576471" InformativeScreenshot="8c0567adfb0759cac6935380d5799564" Selector="&lt;webctrl aaname='Name' parentid='gamecontainer' tag='SPAN' idx='2' /&gt;&#xA;&lt;nav up='1' /&gt;&#xA;&lt;webctrl id='*' tag='INPUT' /&gt;&#xA;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Supply Address 1'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_29">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b68a6ed6-bac0-43be-a713-574347785015" InformativeScreenshot="9457dc9099442c7a93a32ce6677ace76" Selector="&lt;webctrl id='supply_table' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='5' tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[supAddress1]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  Supply Address 1'" EmptyField="False" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="TypeInto_22" SendWindowMessages="False" SimulateType="True" Text="[supAddress1]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2cad06fb-2097-41c8-9f1a-057cc11b549e" InformativeScreenshot="5daaa31a59b75d29c0c59a4bd740d345" Selector="&lt;webctrl aaname='Address' parentid='gamecontainer' tag='SPAN' idx='2' /&gt;&#xA;&lt;nav up='1' /&gt;&#xA;&lt;webctrl id='*' tag='INPUT' /&gt;&#xA;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Supply Address 2'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_30">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5d13ada0-0a87-4b66-bcfa-f559244ec107" InformativeScreenshot="5fd9ccf1612558f52da9a37530d0acd3" Selector="&lt;webctrl id='supply_table' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='7' tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[supAddress2]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  Supply Address 2'" EmptyField="False" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="TypeInto_23" SendWindowMessages="False" SimulateType="True" Text="[supAddress2]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="38bb88b2-cd65-447c-a487-9facbe18246c" InformativeScreenshot="f66274dcafe910a256d0fb220b63f08d" Selector="&lt;webctrl aaname='Address-2' parentid='gamecontainer' tag='SPAN' idx='2' /&gt;&#xA;&lt;nav up='1' /&gt;&#xA;&lt;webctrl id='*' tag='INPUT' /&gt;&#xA;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Supply City'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_31">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dd47b5d3-98f3-46fe-bbb7-4c75d05c2d4a" InformativeScreenshot="be52cbc2f94ad8eee6bff2f4b634aeec" Selector="&lt;webctrl id='supply_table' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='3' tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[supCity]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  Supply City'" EmptyField="False" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="TypeInto_24" SendWindowMessages="False" SimulateType="True" Text="[supCity]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c2084500-3739-4bfd-9b19-23eba5fc1b53" InformativeScreenshot="f1036cdaa28876142e8d5bd75df36099" Selector="&lt;webctrl aaname='City' parentid='gamecontainer' tag='SPAN' idx='2' /&gt;&#xA;&lt;nav up='1' /&gt;&#xA;&lt;webctrl id='*' tag='INPUT' /&gt;&#xA;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Supply State'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_32">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="52a4fa03-5214-4b91-b63a-b5ea49b9c31e" InformativeScreenshot="c894e431c3b2061c338a6be9bffce2b0" Selector="&lt;webctrl id='supply_table' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='6' tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[supState]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item 'SELECT  Supply State'" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="SelectItem_4" Item="[supState]">
+              <ui:SelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="50">
+                  <x:String>AL</x:String>
+                  <x:String>AK</x:String>
+                  <x:String>AZ</x:String>
+                  <x:String>AR</x:String>
+                  <x:String>CA</x:String>
+                  <x:String>CO</x:String>
+                  <x:String>CT</x:String>
+                  <x:String>DE</x:String>
+                  <x:String>DC</x:String>
+                  <x:String>FL</x:String>
+                  <x:String>GA</x:String>
+                  <x:String>HI</x:String>
+                  <x:String>ID</x:String>
+                  <x:String>IL</x:String>
+                  <x:String>IN</x:String>
+                  <x:String>IA</x:String>
+                  <x:String>KS</x:String>
+                  <x:String>KY</x:String>
+                  <x:String>LA</x:String>
+                  <x:String>ME</x:String>
+                  <x:String>MD</x:String>
+                  <x:String>MA</x:String>
+                  <x:String>MI</x:String>
+                  <x:String>MN</x:String>
+                  <x:String>MS</x:String>
+                  <x:String>MO</x:String>
+                  <x:String>MT</x:String>
+                  <x:String>NE</x:String>
+                  <x:String>NH</x:String>
+                  <x:String>NV</x:String>
+                  <x:String>NJ</x:String>
+                  <x:String>NM</x:String>
+                  <x:String>NY</x:String>
+                  <x:String>NC</x:String>
+                  <x:String>ND</x:String>
+                  <x:String>OH</x:String>
+                  <x:String>ON</x:String>
+                  <x:String>OK</x:String>
+                  <x:String>OR</x:String>
+                  <x:String>PA</x:String>
+                  <x:String>QC</x:String>
+                  <x:String>RI</x:String>
+                  <x:String>SC</x:String>
+                  <x:String>SD</x:String>
+                  <x:String>TN</x:String>
+                  <x:String>TX</x:String>
+                  <x:String>UT</x:String>
+                  <x:String>VT</x:String>
+                  <x:String>VA</x:String>
+                  <x:String>WA</x:String>
+                </scg:List>
+              </ui:SelectItem.Items>
+              <ui:SelectItem.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="04c07a9b-a38e-462b-a0a9-50eddbdbc571" InformativeScreenshot="59e6a9c90b144cfdacce67492cff4ea7" Selector="&lt;webctrl id='8UBXF' tag='SELECT' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:SelectItem.Target>
+            </ui:SelectItem>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Supply Zip Code'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_33">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="817fcc90-e6fb-402e-8388-bf8d9d5dffc8" InformativeScreenshot="4c15d50226bc0f8bff6c68cc8912e052" Selector="&lt;webctrl id='supply_table' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='4' tag='TD' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[supZip]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  Supply Zip Code'" EmptyField="False" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="TypeInto_25" SendWindowMessages="False" SimulateType="True" Text="[supZip]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c9577c44-8d21-452d-8813-b03de8819f98" InformativeScreenshot="fe37d3161f542ef6385a4491a89b9946" Selector="&lt;webctrl aaname='Zip' tag='LABEL' idx='2' /&gt;&#xA;&lt;nav up='1' /&gt;&#xA;&lt;webctrl id='*' tag='INPUT' /&gt;&#xA;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'BUTTON - SUBMIT'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition OffsetX="37" OffsetY="8" Position="TopLeft" />
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eda98615-315d-494c-ae28-5560da84b44a" InformativeScreenshot="5974a6b8235da770d14b86048e56f980" Selector="&lt;webctrl aaname='Submit Form' tag='BUTTON' type='button' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'SPAN  Contract Number'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="GetValue_34">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b104b031-32e7-4c5a-893e-df86d02ba62b" InformativeScreenshot="236d229863346ea6350486c9d914c952" Selector="&lt;webctrl id='CTRNR' tag='SPAN' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[contractNum]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  Contract Number'" EmptyField="False" sap:VirtualizedContainerService.HintSize="528,134" sap2010:WorkflowViewState.IdRef="TypeInto_26" SendWindowMessages="False" SimulateType="True" Text="[contractNum]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ea03c756-52ab-49aa-a19e-453841d2027b" InformativeScreenshot="4f9d9312e640412a4af68d9398153701" Selector="&lt;webctrl id='PDRSJ' tag='INPUT' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'BUTTON - CREATE'" sap:VirtualizedContainerService.HintSize="528,106" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition OffsetX="31" OffsetY="11" Position="TopLeft" />
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="27b215f8-1e13-4729-ba19-de308cb0f2d4" InformativeScreenshot="297307f6015655f84d9e9da15ab96915" Selector="&lt;webctrl aaname='Create' tag='BUTTON' type='button' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:Click.Target>
+            </ui:Click>
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
+    </ui:BrowserScope>
+  </Sequence>
+</Activity>
